@@ -1,0 +1,8 @@
+[build]
+  command = "npm run build"  # Command to build your project
+  publish = "client/dist"    # Directory containing the built files
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
