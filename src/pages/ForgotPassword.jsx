@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom"
 import { FormProvider } from "@/contexts"
 import { Form, FormBody, TextInput } from "@/components"
-import { authBaseUrl } from "@/constants/Forms"
+import { authDevUrl } from "@/constants/Forms"
 import { forgotPasswordFormData as formData } from "@/constants/FormData"
+import { ForgotPasswordRules as rules } from "@/constants/FormRules"
 
 const ForgotPassword = () => {
-  const rules = {}
   const handleUpdate = ( status, resData, error) => {
     console.log(resData)
   }
@@ -18,7 +18,7 @@ const ForgotPassword = () => {
         formRules={rules}
       >
         <Form
-          url={`${authBaseUrl}/forgot-password`}
+          url={`${authDevUrl}/forgot-password`}
           request="post"
           handleUpdate={handleUpdate}
         >

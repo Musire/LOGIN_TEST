@@ -20,3 +20,12 @@ export const SignupRules = {
         matchError: 'passwords do not match'
     }
 }
+
+export const ForgotPasswordRules = {
+    email: {
+        required: true,
+        message: "email field required"
+    } 
+     
+
+}

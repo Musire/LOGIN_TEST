@@ -5,7 +5,7 @@ const useRequest = () => {
     const [resData, setData] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(false)
-    const [ status, setStatus ] = useState(null)
+    const [ status, setStatus ] = useState(false)
 
     const getRequest = useCallback(async (url, headers) => {
         try {

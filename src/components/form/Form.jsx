@@ -29,7 +29,6 @@ const Form = ({ children, handleUpdate, url, request }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const formErrors = await validateAllFields()
-        console.log(formErrors)
         if ((Object.keys(formErrors).length === 0)) {
             if (request === 'get' || request === 'delete') {
                 await selectedRequest(url, headers)

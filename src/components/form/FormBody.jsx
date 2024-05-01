@@ -38,8 +38,8 @@ const ErrorButton = () => {
 
 const FormBody = ({ children, ...props }) => {
 
-    const {error, isLoading, status} = useFormContext()
-    const errorLess = (!error || (Object.entries(error).length === 0))
+    const {error, resData, isLoading, status} = useFormContext()
+    const ifError = (Object.keys(error).length !== 0)
 
     return (
         <div className="flex flex-col w-full px-4 gap-y-8">
@@ -47,11 +47,12 @@ const FormBody = ({ children, ...props }) => {
                 { children }
             </ul>
             <span className="flex flex-col justify-end w-full gap-y-4 gap-x-8">
-                { !isLoading && error && <ErrorButton />}
+                { !isLoading && ifError && <ErrorButton />}
                 { isLoading && <LoadingButton />}
-                { !isLoading && !error && !status && <WaitingButton /> }
+                { !isLoading && !ifError && !status && <WaitingButton /> }
                 { (status === 200) && <SuccessButton />  }
-                {errorLess? null : <span className="w-full py-2 text-red-400">{error}</span>}
+                { !ifError ? null : <span className="w-full py-2 text-red-400">{error}</span>}
+                { resData?.message && <span className="w-full py-2 text-green-400">{resData.message}</span> }
             </span>
         </div>
      );
