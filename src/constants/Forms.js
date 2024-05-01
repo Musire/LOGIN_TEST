@@ -5,3 +5,5 @@ export const headers = { headers: {
 }}
 
 export const authBaseUrl = import.meta.env.VITE_BASE_URL
+
+export const authDevUrl = import.meta.env.VITE_BASE_URL_DEV

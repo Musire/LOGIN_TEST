@@ -113,4 +113,8 @@ html {
     @apply px-3 py-2 easy-transition bg-neutral-900 hover:bg-neutral-800
   }
 
+  .btn-red {
+    @apply px-3 py-2 easy-transition bg-red-900 hover:bg-red-800
+  }
+
 }

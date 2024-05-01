@@ -14,3 +14,8 @@ export const LoginFormData = {
 export const forgotPasswordFormData = {
     email: ""
 }
+
+export const ResetPasswordFormData = {
+    password: "",
+    password2: ""
+}

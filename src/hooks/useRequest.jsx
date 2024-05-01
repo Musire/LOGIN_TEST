@@ -9,6 +9,7 @@ const useRequest = () => {
 
     const getRequest = useCallback(async (url, headers) => {
         try {
+            setError(false)
             setIsLoading(true)
             const response = await axios.get(url, headers)
             setData(() => response?.data);
@@ -22,6 +23,7 @@ const useRequest = () => {
 
     const postRequest = useCallback(async (url, requestData, headers) => {
         try {
+            setError(false)
             setIsLoading(true)
             const response = await axios.post(url, requestData, headers)
             setData(() => response?.data);
@@ -35,6 +37,7 @@ const useRequest = () => {
 
     const patchRequest = useCallback(async (url, requestData, headers) => {
         try {
+            setError(false)
             setIsLoading(true)
             const response =  await axios.patch(url, requestData, headers)
             setData(() => response?.data);
@@ -48,6 +51,7 @@ const useRequest = () => {
 
     const deleteRequest = useCallback(async (url, headers) => {
         try {
+            setError(false)
             setIsLoading(true)
             const response =  await axios.delete(url, headers)
             setData(() => response?.data);

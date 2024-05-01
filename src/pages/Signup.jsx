@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { FormProvider } from "@/contexts"
 import { Form, FormBody, TextInput } from "@/components"
 import { SignupFormData as formData } from "@/constants/FormData"
+import { SignupRules as rules } from "@/constants/FormRules"
 import { useCentral } from "@/hooks"
 import { useEffect } from "react"
 
@@ -9,12 +10,9 @@ const Signup = () => {
   const {  updateAccessToken, updateRefreshToken, login } = useCentral()
   const authBaseUrl = import.meta.env.VITE_BASE_URL
   const navigate = useNavigate()
-  const rules = {}
   
   const handleUpdate = (status, resData, error) => {
-    if (status === 200) {
-      navigate('/signup-success')
-    }
+    console.log(resData)
   }
 
   useEffect(() => {

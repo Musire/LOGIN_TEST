@@ -1,8 +1,8 @@
 import { Link, useLocation } from "react-router-dom"
 import { FormProvider } from "@/contexts"
 import { Form, FormBody, TextInput } from "@/components"
-import { forgotPasswordFormData as formData } from "@/constants/FormData"
-import { authBaseUrl} from '@/constants/Forms'
+import { ResetPasswordFormData as formData } from "@/constants/FormData"
+import { authDevUrl} from '@/constants/Forms'
 
 const ResetPassword = () => {
   const location = useLocation()
@@ -11,7 +11,7 @@ const ResetPassword = () => {
 
   const rules = {}
   const handleUpdate = ( status, resData, error) => {
-    console.log(resData)
+    console.log(error)
   }
 
   return (
@@ -22,7 +22,7 @@ const ResetPassword = () => {
         formRules={rules}
       >
         <Form
-          url={`${authBaseUrl}/reset-password/?token=${token}`}
+          url={`${authDevUrl}/reset-password/?token=${token}`}
           request="post"
           handleUpdate={handleUpdate}
         >
