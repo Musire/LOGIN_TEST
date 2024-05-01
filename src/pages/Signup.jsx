@@ -16,7 +16,6 @@ const Signup = () => {
   }
 
   useEffect(() => {
-    console.log('effect fired!!!')
     const accessToken = localStorage.getItem('access-token')
     if (!accessToken) return
     login()

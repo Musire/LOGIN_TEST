@@ -15,7 +15,8 @@ export const FormProvider = ({ children, initialFormData, formRules }) => {
     const { 
         validationErrors, 
         validateAllFields, 
-        handleBlur
+        handleBlur,
+        errorFreeValidation
     } = useValidation(formRules, formData)
 
     const { 
@@ -29,7 +30,6 @@ export const FormProvider = ({ children, initialFormData, formRules }) => {
         deleteRequest 
     } = useRequest()
 
-    const errorFreeValidation = (Object.keys(validationErrors).length === 0)
     
     const formContext = { 
         formData, 

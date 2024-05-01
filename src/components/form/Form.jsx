@@ -1,12 +1,10 @@
-import { useEffect } from "react"
+import { useCallback, useEffect } from "react"
 import { useFormContext } from "@/hooks"
 import { headers } from "@/constants/Forms"
 
 const Form = ({ children, handleUpdate, url, request }) => {
-
     
     const { 
-        validationErrors, 
         validateAllFields, 
         formData, 
         resData, 
@@ -16,8 +14,7 @@ const Form = ({ children, handleUpdate, url, request }) => {
         postRequest, 
         getRequest, 
         patchRequest, 
-        deleteRequest,
-        errorFreeValidation
+        deleteRequest
     } = useFormContext()
 
     const requestType = {
@@ -27,24 +24,27 @@ const Form = ({ children, handleUpdate, url, request }) => {
         delete: deleteRequest,
     }
 
+    const selectedRequest = requestType[request]
+
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await validateAllFields()
-
-        if (!errorFreeValidation) console.log('errors', validationErrors)
-
-        let selectedRequest = requestType[request]
-
-        if (request === 'get' || request === 'delete') return await selectedRequest(url, headers)
-
-        await selectedRequest( url, {...formData}, headers )
-    }
+        const formErrors = await validateAllFields()
+        console.log(formErrors)
+        if ((Object.keys(formErrors).length === 0)) {
+            if (request === 'get' || request === 'delete') {
+                await selectedRequest(url, headers)
+            }
+    
+            await selectedRequest( url, {...formData}, headers )
+        }
+    }   
 
     useEffect(() => {
         if (!isLoading && status) {
             handleUpdate(status, resData, error)
         }
     }, [ isLoading, status, resData, handleUpdate, error ])
+
 
     return (
         <form onSubmit={(e) => handleSubmit(e)} className="w-full h-[80vh] overflow-y-scroll scrollbar-none rounded-xl">

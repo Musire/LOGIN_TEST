@@ -4,8 +4,9 @@ const useValidation = ( validationRules, currentState ) => {
 
     const [ validationErrors, setValidationErrors] = useState({})
 
-    const validateField = async (name, value, rulesToValidate) => {
+    const errorFreeValidation = (Object.keys(validationErrors).length === 0)
 
+    const validateField = async (name, value, rulesToValidate) => {
 
         let rules = rulesToValidate[name] || []
         let errorMsg = ""
@@ -33,12 +34,18 @@ const useValidation = ( validationRules, currentState ) => {
 
             return (errorMsg) ? appendedError : prunedError
         })
+
+        return { [name]: errorMsg }
     }
 
     const validateAllFields = async () => {
+        let allErrors = {}
         for (let rule in validationRules) {
-            await validateField(rule, currentState[rule], validationRules)
+            const error = await validateField(rule, currentState[rule], validationRules)
+            const [[key, value]] = Object.entries(error)
+            if (value) allErrors = {...allErrors, ...error}
         }
+        return allErrors
     }
 
     const handleBlur = (e) => {
@@ -47,7 +54,8 @@ const useValidation = ( validationRules, currentState ) => {
     }
 
 
-    return { validationErrors, handleBlur, validateAllFields };
+
+    return { validationErrors, handleBlur, validateAllFields, errorFreeValidation };
 }
  
 export default useValidation;
