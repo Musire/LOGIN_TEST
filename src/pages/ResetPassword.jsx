@@ -3,7 +3,7 @@ import { FormProvider } from "@/contexts"
 import { Form, FormBody, TextInput } from "@/components"
 import { ResetPasswordFormData as formData } from "@/constants/FormData"
 import { ResetPasswordRules as rules } from "@/constants/FormRules"
-import { authDevUrl} from '@/constants/Forms'
+import { authBaseUrl } from '@/constants/Forms'
 
 const ResetPassword = () => {
   const location = useLocation()
@@ -22,7 +22,7 @@ const ResetPassword = () => {
         formRules={rules}
       >
         <Form
-          url={`${authDevUrl}/reset-password/?token=${token}`}
+          url={`${authBaseUrl}/reset-password/?token=${token}`}
           request="post"
           handleUpdate={handleUpdate}
         >
