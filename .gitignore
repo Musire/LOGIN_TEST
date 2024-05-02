@@ -11,6 +11,8 @@ node_modules
 dist-ssr
 *.local
 
+# Ignore build directories and files
+/build/
 /dist/
 
 # Editor directories and files
