@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom"
 import { FormProvider } from "@/contexts"
 import { Form, FormBody, TextInput } from "@/components"
 import { ResetPasswordFormData as formData } from "@/constants/FormData"
+import { ResetPasswordRules as rules } from "@/constants/FormRules"
 import { authDevUrl} from '@/constants/Forms'
 
 const ResetPassword = () => {
@@ -9,7 +10,6 @@ const ResetPassword = () => {
   const queryParams = new URLSearchParams(location.search)
   const token = queryParams.get('token')
 
-  const rules = {}
   const handleUpdate = ( status, resData, error) => {
     console.log(error)
   }

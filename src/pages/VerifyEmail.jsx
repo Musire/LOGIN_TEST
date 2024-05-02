@@ -5,7 +5,7 @@ import { headers, authBaseUrl } from "@/constants/Forms"
 import { useEffect } from 'react'
 
 const VerifyEmail = () => {
-    const { getRequest, resData, isLoading, error, status } = useRequest()
+    const { getRequest, status } = useRequest()
     const navigate = useNavigate()
     const location = useLocation()
     const queryParams = new URLSearchParams(location.search)

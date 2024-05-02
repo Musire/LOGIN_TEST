@@ -2,6 +2,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom"
 import { FormProvider } from "@/contexts"
 import { Form, FormBody, TextInput } from "@/components"
 import { LoginFormData as formData } from "@/constants/FormData"
+import { LoginRules as rules } from "@/constants/FormRules"
 import { useCentral } from "@/hooks"
 import { useEffect } from "react"
 
@@ -9,7 +10,6 @@ const Login = () => {
   const {  updateAccessToken, updateRefreshToken, login } = useCentral()
   const navigate = useNavigate()
   const authBaseUrl = import.meta.env.VITE_BASE_URL
-  const rules = {}
 
   useEffect(() => {
     const accessToken = localStorage.getItem('access-token')
